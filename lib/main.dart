@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mercado_local_movil/presentation/auth/register_page.dart';
+import 'package:mercado_local_movil/providers/register_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/auth_provider.dart';
@@ -10,6 +12,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => RegisterProvider()),
       ],
       child: const MercadoLocalApp(),
     ),
@@ -27,6 +30,8 @@ class MercadoLocalApp extends StatelessWidget {
       routes: {
         "/login": (_) => LoginPage(),
         "/home": (_) => HomePage(),
+        "/register": (_) => RegisterPage(),
+
       },
     );
   }
