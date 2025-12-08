@@ -95,7 +95,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          // Logo
+                          // Logo - Usando tu Logo2.png
                           Hero(
                             tag: 'app_logo',
                             child: Container(
@@ -105,11 +105,13 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                                 shape: BoxShape.circle,
                                 color: Color(0xFFF5F5F0),
                               ),
-                              child: Center(
-                                child: Icon(
-                                  Icons.shopping_basket_rounded,
-                                  size: 60,
-                                  color: Color(0xFF6B8E4E),
+                              child: ClipOval(
+                                child: Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: Image.asset(
+                                    'lib/assets/imagenes/Logo2.png',
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ),
                             ),
@@ -324,11 +326,11 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
 
                           SizedBox(height: 24),
 
-                          // Google Button
+                          // Google Button - AHORA SIN Image.network
                           SizedBox(
                             width: double.infinity,
                             height: 52,
-                            child: OutlinedButton(
+                            child: OutlinedButton.icon(
                               onPressed: () {
                                 // TODO: Implementar login con Google
                               },
@@ -345,23 +347,28 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.network(
-                                    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg',
-                                    width: 24,
-                                    height: 24,
+                              icon: Container(
+                                width: 24,
+                                height: 24,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Color(0xFF6B8E4E).withOpacity(0.3),
+                                    width: 1.5,
                                   ),
-                                  SizedBox(width: 12),
-                                  Text(
-                                    "Iniciar sesión con Google",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
+                                ),
+                                child: Icon(
+                                  Icons.g_mobiledata,
+                                  size: 20,
+                                  color: Color(0xFF6B8E4E),
+                                ),
+                              ),
+                              label: Text(
+                                "Iniciar sesión con Google",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           ),
