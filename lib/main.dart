@@ -5,7 +5,10 @@ import 'package:provider/provider.dart';
 
 import 'providers/auth_provider.dart';
 import 'presentation/auth/login_page.dart';
-import 'presentation/home/home_page.dart';
+import 'presentation/consumer/consumer_main_page.dart';
+
+import 'package:mercado_local_movil/presentation/explorar/explorar_page.dart';
+
 
 void main() {
   runApp(
@@ -29,9 +32,10 @@ class MercadoLocalApp extends StatelessWidget {
       initialRoute: "/login",
       routes: {
         "/login": (_) => LoginPage(),
-        "/home": (_) => HomePage(),
         "/register": (_) => RegisterPage(),
 
+        // ESTA ES LA PANTALLA QUE DEBE CONTENER EL NAVBAR
+        "/consumer": (_) => ConsumerMainPage(),
       },
     );
   }

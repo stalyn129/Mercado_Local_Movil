@@ -244,7 +244,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                                 );
 
                                 if (ok) {
-                                  Navigator.pushReplacementNamed(context, "/home");
+                                  Navigator.pushReplacementNamed(context, "/consumer");
                                 } else {
                                   _showError(context, "Credenciales incorrectas");
                                 }
