@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mercado_local_movil/presentation/auth/register_page.dart';
-import 'package:mercado_local_movil/providers/register_provider.dart';
+import 'package:mercado_local_movil/presentation/producto_detalle/producto_detalle_page.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/auth_provider.dart';
+import 'providers/register_provider.dart';
+
 import 'presentation/auth/login_page.dart';
+import 'presentation/auth/register_page.dart';
+
 import 'presentation/consumer/consumer_main_page.dart';
-
-import 'package:mercado_local_movil/presentation/explorar/explorar_page.dart';
-
 
 void main() {
   runApp(
@@ -30,13 +30,24 @@ class MercadoLocalApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: "/login",
+
       routes: {
         "/login": (_) => LoginPage(),
         "/register": (_) => RegisterPage(),
-
-        // ESTA ES LA PANTALLA QUE DEBE CONTENER EL NAVBAR
         "/consumer": (_) => ConsumerMainPage(),
+      },
+
+      onGenerateRoute: (settings) {
+        if (settings.name == "/producto_detalle") {
+          final int id = settings.arguments as int;
+
+          return MaterialPageRoute(
+            builder: (_) => ProductoDetallePage(idProducto: id),
+          );
+        }
+        return null;
       },
     );
   }
 }
+

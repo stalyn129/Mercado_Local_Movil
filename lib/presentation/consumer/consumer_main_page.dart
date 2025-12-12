@@ -27,7 +27,7 @@ class _ConsumerMainPageState extends State<ConsumerMainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true, // permite el efecto curvo transparente
+      extendBody: true,
       body: _pages[_currentIndex],
 
       bottomNavigationBar: CurvedBottomNav(

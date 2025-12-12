@@ -856,14 +856,16 @@ class ProductoDetalle extends StatelessWidget {
 
                       const SizedBox(height: 24),
 
-                      // Botón de acción
+                      // ✅ BOTÓN CORREGIDO - Ver Producto Completo
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
+                            // ✅ CORRECCIÓN: Usa /producto_detalle con arguments
                             Navigator.pushNamed(
                               context,
-                              '/producto/${producto['idProducto']}',
+                              '/producto_detalle',
+                              arguments: producto['idProducto'],
                             );
                           },
                           style: ElevatedButton.styleFrom(

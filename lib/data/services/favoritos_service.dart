@@ -1,19 +1,17 @@
 import '../api/api_client.dart';
 import '../api/endpoints.dart';
 
-class CarritoService {
+class FavoritosService {
   final ApiClient _api = ApiClient();
 
-  Future<bool> agregarAlCarrito(
+  Future<bool> agregarFavorito(
       int idConsumidor,
-      int idProducto,
-      int cantidad, {
+      int idProducto, {
         String? token,
       }) async {
     final body = {
       "idConsumidor": idConsumidor,
       "idProducto": idProducto,
-      "cantidad": cantidad,
     };
 
     final headers = <String, String>{
@@ -21,7 +19,7 @@ class CarritoService {
     };
 
     final res = await _api.post(
-      Endpoints.carritoAgregar,
+      Endpoints.favoritosAgregar,
       body,
       headers: headers,
     );

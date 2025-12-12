@@ -427,11 +427,11 @@ class _ExplorarPageState extends State<ExplorarPage> {
       itemBuilder: (context, i) {
         final p = productos[i];
         return GestureDetector(
-          // 🔥 NAVEGAR AL DETALLE DEL PRODUCTO
+          // 🔥 NAVEGAR AL DETALLE DEL PRODUCTO - RUTA CORREGIDA
           onTap: () {
             Navigator.pushNamed(
               context,
-              '/producto-detalle',
+              '/producto_detalle',  // ✅ CAMBIO: guion bajo en lugar de guion medio
               arguments: p["idProducto"],
             );
           },
