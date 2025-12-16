@@ -1,17 +1,27 @@
+// lib/providers/favoritos_provider.dart
+
 import 'package:flutter/material.dart';
 import '../data/services/favoritos_service.dart';
 
 class FavoritosProvider extends ChangeNotifier {
-  final FavoritosService _service = FavoritosService();
+  final FavoritosService service = FavoritosService();
 
-  bool favorito = false;
+  List favoritos = [];
+  bool loading = false;
 
-  Future<void> agregarFavorito(int idConsumidor, int idProducto) async {
-    final ok = await _service.agregarFavorito(idConsumidor, idProducto);
+  Future<void> cargar(int idConsumidor, String token) async {
+    loading = true;
+    notifyListeners();
 
-    if (ok) {
-      favorito = true;
-      notifyListeners();
-    }
+    favoritos = await service.listar(idConsumidor, token);
+
+    loading = false;
+    notifyListeners();
+  }
+
+  Future<void> eliminar(int idFavorito, String token) async {
+    await service.eliminar(idFavorito, token);
+    favoritos.removeWhere((f) => f["idFavorito"] == idFavorito);
+    notifyListeners();
   }
 }

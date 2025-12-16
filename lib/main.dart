@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mercado_local_movil/presentation/producto_detalle/producto_detalle_page.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/auth_provider.dart';
 import 'providers/register_provider.dart';
+import 'providers/favoritos_provider.dart';
+import 'providers/carrito_provider.dart';
+import 'providers/productos_provider.dart';
 
 import 'presentation/auth/login_page.dart';
 import 'presentation/auth/register_page.dart';
-
 import 'presentation/consumer/consumer_main_page.dart';
+import 'presentation/producto_detalle/producto_detalle_page.dart';
 
 void main() {
   runApp(
@@ -16,6 +18,9 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => RegisterProvider()),
+        ChangeNotifierProvider(create: (_) => FavoritosProvider()),
+        ChangeNotifierProvider(create: (_) => CarritoProvider()),
+        ChangeNotifierProvider(create: (_) => ProductosProvider()),
       ],
       child: const MercadoLocalApp(),
     ),
@@ -50,4 +55,3 @@ class MercadoLocalApp extends StatelessWidget {
     );
   }
 }
-

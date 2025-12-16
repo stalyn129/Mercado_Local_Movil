@@ -9,5 +9,8 @@ class Endpoints {
   static const String carritoAgregar = '/carrito/agregar';
 
   // Favoritos
-  static const String favoritosAgregar = '/favoritos/agregar';
+  static const String favoritosListar   = '/favoritos/listar';
+  static const String favoritosAgregar  = '/favoritos/agregar';
+  static const String favoritosEliminar = '/favoritos/eliminar';
+
 }

@@ -13,6 +13,7 @@ class ApiClient {
     ),
   );
 
+  // GET ============================
   Future<Response> get(String path, {Map<String, dynamic>? headers}) async {
     return _dio.get(
       path,
@@ -20,11 +21,20 @@ class ApiClient {
     );
   }
 
+  // POST ===========================
   Future<Response> post(String path, Map<String, dynamic> body,
       {Map<String, dynamic>? headers}) async {
     return _dio.post(
       path,
       data: body,
+      options: Options(headers: headers),
+    );
+  }
+
+  // ⭐ DELETE (NECESARIO PARA FAVORITOS) ⭐
+  Future<Response> delete(String path, {Map<String, dynamic>? headers}) async {
+    return _dio.delete(
+      path,
       options: Options(headers: headers),
     );
   }

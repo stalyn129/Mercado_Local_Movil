@@ -13,7 +13,10 @@ dependencies:
   dio: ^5.4.0
   http: ^1.6.0
 
-  # ⭐ Agregar este paquete:
+  # ⭐ Necesario para guardar token y usuario
+  shared_preferences: ^2.2.2
+
+  # ⭐ Tu librería del nav estético
   curved_navigation_bar: ^1.0.3
 
 dev_dependencies:

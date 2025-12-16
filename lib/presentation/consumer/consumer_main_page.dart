@@ -1,3 +1,6 @@
+// lib/presentation/consumer/consumer_main_page.dart
+// ✅ TU VERSIÓN ORIGINAL - SIN CAMBIOS
+
 import 'package:flutter/material.dart';
 import 'package:mercado_local_movil/presentation/explorar/explorar_page.dart';
 import '../widgets/curved_bottom_nav.dart';
