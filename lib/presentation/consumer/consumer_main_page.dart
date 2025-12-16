@@ -1,5 +1,5 @@
 // lib/presentation/consumer/consumer_main_page.dart
-// ✅ TU VERSIÓN ORIGINAL - SIN CAMBIOS
+// ✅ VERSIÓN CORREGIDA - Con callback para FavoritosPage
 
 import 'package:flutter/material.dart';
 import 'package:mercado_local_movil/presentation/explorar/explorar_page.dart';
@@ -19,25 +19,28 @@ class ConsumerMainPage extends StatefulWidget {
 class _ConsumerMainPageState extends State<ConsumerMainPage> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
-    HomePage(),
-    ExplorarPage(),
-    FavoritosPage(),
-    CarritoPage(),
-    PerfilPage(),
-  ];
+  // ✅ Método para cambiar de pestaña
+  void _changeTab(int index) {
+    setState(() => _currentIndex = index);
+  }
 
   @override
   Widget build(BuildContext context) {
+    // ✅ Las páginas se crean aquí en el build para poder pasar _changeTab
+    final List<Widget> pages = [
+      HomePage(),
+      ExplorarPage(),
+      FavoritosPage(onTabChange: _changeTab), // ✅ Pasa el callback
+      CarritoPage(),
+      PerfilPage(),
+    ];
+
     return Scaffold(
       extendBody: true,
-      body: _pages[_currentIndex],
-
+      body: pages[_currentIndex],
       bottomNavigationBar: CurvedBottomNav(
         index: _currentIndex,
-        onTap: (i) {
-          setState(() => _currentIndex = i);
-        },
+        onTap: _changeTab,
       ),
     );
   }

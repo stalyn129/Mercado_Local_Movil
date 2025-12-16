@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/favoritos_provider.dart';
 import '../../data/services/auth_service.dart';
-import 'package:mercado_local_movil/presentation/explorar/explorar_page.dart'; // ✅ AGREGADO
 
 class FavoritosPage extends StatefulWidget {
-  const FavoritosPage({super.key}); // ✅ SIN el parámetro onTabChange
+  final Function(int)? onTabChange; // ✅ AGREGADO: Callback
+
+  const FavoritosPage({this.onTabChange, super.key}); // ✅ CON parámetro
 
   @override
   State<FavoritosPage> createState() => _FavoritosPageState();
@@ -571,13 +572,8 @@ class _FavoritosPageState extends State<FavoritosPage> with TickerProviderStateM
               },
               child: ElevatedButton(
                 onPressed: () {
-                  // ✅ ÚNICO CAMBIO: Navigator.push en lugar de callback
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ExplorarPage(),
-                    ),
-                  );
+                  // ✅ Cambia a la pestaña de Explorar (índice 1)
+                  widget.onTabChange?.call(1);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF5A8F48),
